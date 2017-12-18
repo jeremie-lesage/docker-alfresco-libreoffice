@@ -2,15 +2,17 @@ FROM centos:centos7
 MAINTAINER Jeremie Lesage <jeremie.lesage@gmail.com>
 
 
-ENV LIBREOFFICE_VERSION="5.3.6" \
-    LIBREOFFICE_VERSION_MINOR="5.3.6.1"
+ENV LIBREOFFICE_VERSION="5.4.3" \
+    LIBREOFFICE_VERSION_MINOR="5.4.3.2"
 ENV LIBREOFFICE_DOWNLOAD_MIRROR="http://download.documentfoundation.org/libreoffice/stable" \
     HOST="0.0.0.0" \
     PORT="8100" \
-    LIBREOFFICE_HOME="/opt/libreoffice5.3" \
+    LIBREOFFICE_HOME="/opt/libreoffice5.4" \
     LIBREOFFICE_RPM_TGZ="LibreOffice_${LIBREOFFICE_VERSION}_Linux_x86-64_rpm.tar.gz" \
     LIBREOFFICE_RPM_DIR="LibreOffice_${LIBREOFFICE_VERSION_MINOR}_Linux_x86-64_rpm" \
     PATH=/opt/libreoffice/program:$PATH
+
+RUN mkdir /opt/libreoffice5.4
 
 RUN echo "curl -L ${LIBREOFFICE_DOWNLOAD_MIRROR}/${LIBREOFFICE_VERSION}/rpm/x86_64/${LIBREOFFICE_RPM_TGZ} | tar xz " \
     && curl -L ${LIBREOFFICE_DOWNLOAD_MIRROR}/${LIBREOFFICE_VERSION}/rpm/x86_64/${LIBREOFFICE_RPM_TGZ} | tar xz \
@@ -20,8 +22,8 @@ RUN echo "curl -L ${LIBREOFFICE_DOWNLOAD_MIRROR}/${LIBREOFFICE_VERSION}/rpm/x86_
                       liberation-sans-fonts liberation-mono-fonts freetype open-sans-fonts \
     && yum clean all \
     && yum install -y \
-      ${LIBREOFFICE_RPM_DIR}/RPMS/libreoffice5.3-*.rpm \
-      ${LIBREOFFICE_RPM_DIR}/RPMS/libobasis5.3-*.rpm \
+      ${LIBREOFFICE_RPM_DIR}/RPMS/libreoffice5.4-*.rpm \
+      ${LIBREOFFICE_RPM_DIR}/RPMS/libobasis5.4-*.rpm \
     && yum clean all \
     && rm -rf ${LIBREOFFICE_RPM_DIR} ${LIBREOFFICE_RPM_TGZ} \
     && useradd -ms /bin/bash libreoffice \
