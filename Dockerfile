@@ -1,7 +1,7 @@
 FROM centos:centos7
 MAINTAINER Jeremie Lesage <jeremie.lesage@gmail.com>
 
-ENV LIBREOFFICE_VERSION="5.4.3.2"
+ENV LIBREOFFICE_VERSION="5.4.6.2"
 ENV LIBREOFFICE_DOWNLOAD_MIRROR="https://downloadarchive.documentfoundation.org/libreoffice/old" \
     HOST="0.0.0.0" \
     PORT="8100" \
