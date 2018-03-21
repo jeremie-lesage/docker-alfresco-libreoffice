@@ -1,15 +1,13 @@
 FROM centos:centos7
 MAINTAINER Jeremie Lesage <jeremie.lesage@gmail.com>
 
-
-ENV LIBREOFFICE_VERSION="5.4.3" \
-    LIBREOFFICE_VERSION_MINOR="5.4.3.2"
-ENV LIBREOFFICE_DOWNLOAD_MIRROR="http://download.documentfoundation.org/libreoffice/stable" \
+ENV LIBREOFFICE_VERSION="5.4.3.2"
+ENV LIBREOFFICE_DOWNLOAD_MIRROR="https://downloadarchive.documentfoundation.org/libreoffice/old" \
     HOST="0.0.0.0" \
     PORT="8100" \
     LIBREOFFICE_HOME="/opt/libreoffice5.4" \
     LIBREOFFICE_RPM_TGZ="LibreOffice_${LIBREOFFICE_VERSION}_Linux_x86-64_rpm.tar.gz" \
-    LIBREOFFICE_RPM_DIR="LibreOffice_${LIBREOFFICE_VERSION_MINOR}_Linux_x86-64_rpm" \
+    LIBREOFFICE_RPM_DIR="LibreOffice_${LIBREOFFICE_VERSION}_Linux_x86-64_rpm" \
     PATH=/opt/libreoffice/program:$PATH
 
 RUN mkdir /opt/libreoffice5.4
